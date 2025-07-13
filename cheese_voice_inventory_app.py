@@ -46,3 +46,6 @@ if audio:
         now = datetime.datetime.now().isoformat()
         sheet.append_row([now, product, quantity, unit, st.session_state["location"]])
         st.success(f"✅ Logged: {product} - {quantity} {unit} @ {st.session_state['location']}")
+
+Fix: add required Google Sheets OAuth scope
+
