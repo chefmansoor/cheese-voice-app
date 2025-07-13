@@ -16,7 +16,8 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Google Sheet Setup
 google_creds = json.loads(base64.b64decode(st.secrets["GOOGLE_CREDS_BASE64"]).decode("utf-8"))
-credentials = Credentials.from_service_account_info(google_creds)
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+credentials = Credentials.from_service_account_info(google_creds, scopes=SCOPES)
 gc = gspread.authorize(credentials)
 sheet = gc.open_by_key(st.secrets["GOOGLE_SHEET_ID"]).sheet1
 
